@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Goods — Admin</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-side">
+    <span class="mark">Common Goods</span>
+    <span class="tag">ADMIN DASHBOARD</span>
+    <nav>
+      <button id="navProducts" class="active">Products</button>
+      <button id="navOrders">Orders</button>
+    </nav>
+    <a class="back-link" href="index.html">← Back to store</a>
+    <a class="back-link" href="#" id="logoutBtnAdmin">Log out (<span id="adminUserName"></span>)</a>
+  </aside>
+
+  <main class="admin-main">
+
+    <section id="productsPanel">
+      <div class="toolbar">
+        <div>
+          <h1>Products</h1>
+          <p style="color:var(--ink-soft); font-size:13px; margin-top:4px;">Manage what's in the catalog.</p>
+        </div>
+        <button class="btn" id="addProductBtn">Add product</button>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Description</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="productsTableBody"></tbody>
+      </table>
+    </section>
+
+    <section id="ordersPanel" style="display:none">
+      <div class="toolbar">
+        <div>
+          <h1>Orders</h1>
+          <p style="color:var(--ink-soft); font-size:13px; margin-top:4px;">Track and update order status.</p>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Update status</th></tr>
+        </thead>
+        <tbody id="ordersTableBody"></tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<!-- Product modal -->
+<div class="modal-overlay" id="productModalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="productModalClose" aria-label="Close">✕</button>
+    <h2 id="productModalTitle">Add product</h2>
+    <div class="form-error" id="productError"></div>
+    <form id="productForm">
+      <div class="field"><label for="pName">Name</label><input type="text" id="pName" required></div>
+      <div class="field"><label for="pCategory">Category</label><input type="text" id="pCategory" placeholder="e.g. Kitchen"></div>
+      <div class="field"><label for="pPrice">Price (USD)</label><input type="number" id="pPrice" min="0" step="0.01" required></div>
+      <div class="field"><label for="pStock">Stock</label><input type="number" id="pStock" min="0" step="1" required></div>
+      <div class="field"><label for="pDescription">Description</label><textarea id="pDescription"></textarea></div>
+      <div class="modal-actions"><button type="submit" class="btn">Save product</button></div>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
